@@ -1,0 +1,198 @@
+
+
+/* Лого для использования где угодно */
+
+/*
+
+	Константы для стиля 
+
+	#063 или rgba(0,102,51,1) - зеленый цвет 
+	#666 - серый 
+
+*/
+
+.main-container{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.page-conatiner__content_and_ads{
+	width: 100%;
+	display: flex;
+}
+.page-conatiner{
+	width: 1300px;
+}
+
+.page-conatiner__ads{
+	width: 300px;
+	padding-top: 5px;
+}
+
+.page-conatiner__content{
+	width: 1000px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.logo{
+	color: #063;
+	font-family: 'Racing Sans One', cursive;
+}
+
+.header__logo{
+	font-size: 42px;
+	width: 50%;
+
+}
+
+.header > a{
+	text-decoration: none;
+}
+.header{
+	width: 100%;
+	border-bottom: 1px solid #063;
+	display: flex;
+	justify-content: space-between;
+}
+
+.first-line{
+	width: 100%;
+	margin: 5px 0;
+	display: flex;
+}
+
+
+.first-line__slider{
+	width: 640px;
+}
+
+/* Кастомизация слайдера */
+
+.first-line__slider > .bx-wrapper{
+	padding: 0;
+	margin: 0;
+	border-width: 0;
+	box-shadow: 0;
+}
+
+.first-line__slider .first-lin__slider__ul{
+	margin: 0;
+}
+
+.first-line__slider .bx-controls .bx-pager-item > a.bx-pager-link{
+	background: #666;
+}
+
+.first-line__slider .bx-controls .bx-pager-item > a.bx-pager-link.active{
+	background: #063;
+}
+
+.first-line__slider .bx-controls .bx-pager-item > a.bx-pager-link.active{
+	background: #063;
+}
+.first-line__slider .bx-controls .bx-pager.bx-default-pager{
+	bottom: 10px;
+}
+
+.first-line__slider .bx-wrapper{
+	box-shadow: none;
+}
+/* -------------------- */
+
+.second-line{
+	width: 100%;
+	padding: 5px 0;
+	border-bottom: 1px solid #063;
+	border-top: 1px solid #063;
+}
+
+.banner-horizontal{
+	width: 100%;
+	margin: 5px 0;
+	display: flex;
+	justify-content: center;
+}
+
+.page-conatiner{
+	background: #fff;
+}
+
+.first-line__news-list,.first-line__news-list ul,.first-line__news-list a{
+	margin: 0;
+	padding: 0;
+}
+
+.first-line__news-list ul{
+    list-style-type: none;
+    border: 1px solid rgba(0,102,51,.1);
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.first-line__news-list{
+	width: 350px;
+	margin-left: 5px;
+	background: #fff;
+}
+
+.first-line__news-list a{
+	width: 100%;
+	color: #000;
+	padding: 5px;
+	margin: 1px 0;
+	transition: 0.5s;
+}
+
+.first-line__news-list a:hover{
+	background: #063;
+	color: #fff;
+}
+
+html{
+	font-family: 'Arsenal', sans-serif;
+}
+
+.header__curse{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* Карточки */
+.cards{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.cards > .card{
+	position: relative;
+	margin: 5px 0;
+	width: 320px;
+	background-position: center;
+	background-size: cover;
+	height: 240px;
+}
+.card__title h3{
+	padding: 0 5px; 
+	color: #fff;
+}
+
+.card__title{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(51,51,51,0.85);
+}
+.second-line__cards{
+	width: calc(100% - 5px);
+} 
+
+.ads__container--1.fixed{
+	position: fixed;
+	top: 10px;
+}
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+				 		<div class = "first-line"> 
+				 			<div class = "first-line__slider">
+				 				<ul class="first-lin__slider__ul">
+				 					{% for item in data.first_line %}
+				 						<li onclick="document.location.href='/i/{{item.id}}/';"><img src="{{item.img}}" /></li>
+				 					{% endfor %}
+								</ul>
+				 			</div>
+				 			<div class = "first-line__news-list">
+				 				<ul>
+				 					{% for item in data.first_line %}
+				 					<a href="/i/{{item.id}}/" class = "active">{{item.title}}</a>
+				 					{% endfor %}
+				 				</ul>
+				 			</div>
+				 		</div>
+
+{% endblock %}
