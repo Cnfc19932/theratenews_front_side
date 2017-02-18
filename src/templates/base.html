@@ -5,7 +5,7 @@
 
 		{% if data.seo.ico %}
 			<link rel="icon" href={{ url_for('static', filename=data.seo.ico) }} type="image/x-icon" >
-		{% endif %}
+		{% endif %} 
 
 		<meta http-equiv="Cache-Control" content="no-cache">
 
@@ -50,7 +50,7 @@
 
 				 		<div class = "second-line">
 				 			<div class = "second-line__cards cards">
-				 				{% for item in data.second_line %}
+				 				{% for item in data.second_line[:7] %}
 				 				<a href = "/i/{{item.id}}/" class = "card" style="background-image: url({{ url_for('static', filename=item.img) }})">
 				 					<div class = "card__title">
 				 						<h3>{{item.title}}</h3>
@@ -67,15 +67,13 @@
 								<script>
 								(adsbygoogle = window.adsbygoogle || []).push({});
 								</script>
-				 				<div class = "card" style="background-image: url({{ url_for('static', filename='img/6.jpg') }})">
-				 					
-				 				</div>
-			 					<div class = "card" style="background-image: url({{ url_for('static', filename='img/4.jpg') }})">
-				 					
-				 				</div>
-				 				<div class = "card" style="background-image: url({{ url_for('static', filename='img/5.jpg') }})">
-				 					
-				 				</div>
+				 				{% for item in data.second_line[7:] %}
+				 				<a href = "/i/{{item.id}}/" class = "card" style="background-image: url({{ url_for('static', filename=item.img) }})">
+				 					<div class = "card__title">
+				 						<h3>{{item.title}}</h3>
+				 					</div>
+				 				</a>
+				 				{% endfor %}
 
 				 			</div>
 				 		</div>

@@ -6,7 +6,7 @@
 				 			<div class = "first-line__slider">
 				 				<ul class="first-lin__slider__ul">
 				 					{% for item in data.first_line %}
-				 						<li onclick="document.location.href='/i/{{item.id}}/';"><img src="{{item.img}}" /></li>
+				 						<li onclick="document.location.href='/i/{{item.id}}/';"><img src="{{ url_for('static', filename=item.img) }}" /></li>
 				 					{% endfor %}
 								</ul>
 				 			</div>

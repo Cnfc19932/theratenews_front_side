@@ -196,3 +196,12 @@ html{
 	top: 10px;
 }
 
+.item__image{
+	max-width: 40%; 
+}
+
+@media (max-width: 1300px) {
+	header{
+		background-color: red;
+	}
+}

@@ -1,6 +1,8 @@
 # encoding=utf8  
-import sys  
-from flask import Flask,render_template,url_for
+import sys, requests
+from flask import Flask,render_template,url_for,jsonify
+import logging
+import json
 
 reload(sys)  
 sys.setdefaultencoding('utf8')
@@ -11,46 +13,69 @@ global model
  
 model = {}
 
-model = {
-	'name' : 'TheRateNews',
-	'logo' : 'TheRateNews',
-	'seo' : {
-		'ico' : 'i.ico'
-	}, 
-}
+api_server = ''
+
+## Обработка ответов от api
+
+class API:
+	""" Класс для работы с API """
+	api_server = "http://127.0.0.1:8080/"
+
+	def __init__(self, request):
+		self.request = self.api_server + request
+		logging.debug( u'Установлен адрес '+self.request)
+
+	## Выполняем запрос
+	def go(self):
+		if (self.request):
+			logging.info( u'Запрос на '+self.request )
+			t = requests.get(self.request) 
+			if t.status_code == 200:
+				logging.info( u'Запрос прошел успешно (Code: 200)')
+				logging.debug( u'Ответ '+t.content)
+				return json.loads(t.content)
+			else:
+				logging.warning( u'Запрос вернул '+ t.status_code)
+				return json.loads(jsonify({}))
+		else:
+			logging.warning( u'Не задан адрес' )
+
+		
+
+
+
+##-----------------------------------------------------##
+#t = requests.get("http://127.0.0.1:8080/theratenews/pages/index/")
+#print t.status_code
+
+
  
 @app.route("/")
 def index():
-	model.update({
+	model = API('theratenews/pages/index/').go()
+
+	model.update({ 
 		'title' : "Title",
-		'first_line' : [
-			{ 'title' : 'Порошенко и Трамп по телефону обсудили ситуацию в Авдеевке' , 'id' : '1213' , 'img' : url_for('static', filename='img/1.jpg')},
-			{ 'title' : 'МВД Австрии объяснило причину задержания группы выходцев из Чечни' , 'id' : '1231' , 'img' : url_for('static', filename='img/2.jpg')}
-		],
-		'second_line' : [
-			{ 'title' : 'ЕСПЧ присудил Навальному €64 тыс. за незаконные задержания' , 'id' : '1213' , 'img' : 'img/1.jpg'},
-			{ 'title' : 'ЕСПЧ присудил Навальному €64 тыс. за незаконные задержания' , 'id' : '1213' , 'img' : 'img/1.jpg'},
-			{ 'title' : 'ЕСПЧ присудил Навальному €64 тыс. за незаконные задержания' , 'id' : '1213' , 'img' : 'img/1.jpg'},
-			{ 'title' : 'ЕСПЧ присудил Навальному €64 тыс. за незаконные задержания' , 'id' : '1213' , 'img' : 'img/1.jpg'},
-			{ 'title' : 'ЕСПЧ присудил Навальному €64 тыс. за незаконные задержания' , 'id' : '1213' , 'img' : 'img/1.jpg'},
-			{ 'title' : 'ЕСПЧ присудил Навальному €64 тыс. за незаконные задержания' , 'id' : '1213' , 'img' : 'img/1.jpg'},
-			{ 'title' : 'ЕСПЧ присудил Навальному €64 тыс. за незаконные задержания' , 'id' : '1213' , 'img' : 'img/1.jpg'},
-			{ 'title' : 'ЕСПЧ присудил Навальному €64 тыс. за незаконные задержания' , 'id' : '1213' , 'img' : 'img/1.jpg'}
-		]
 	}) 
+
+	model.update(API('theratenews/modules/firstLine/').go())
+	model.update(API('theratenews/modules/secondLine/').go())
+
 	return render_template('index.html', data = model)
 
 @app.route("/i/<int:post_id>/")
 def item(post_id): 
-	model.update({
-			'news' : {
-				'title' : 'Трамп пообещал отменить «нелепое» судебное решение по миграционному указу',
-				'text' : 'Президент',
-				'img' : '',
-				'id' : '' 
-			}
+	model = API('theratenews/pages/index/').go()
+
+	model.update({ 
+		'title' : "Title",
 	}) 
+	 
+	model.update(API('theratenews/news/').go())
+
+	model.update(API('theratenews/modules/secondLine/').go())
+
 	return render_template('item.html', data = model)
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0') 
+    app.run(debug=False, host='0.0.0.0',port = 8801) 
