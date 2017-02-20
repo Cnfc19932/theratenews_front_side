@@ -67,11 +67,15 @@ def index():
 def item(post_id): 
 	model = API('theratenews/pages/index/').go()
 
+
+	 
+	model.update(API('theratenews/news/511/').go())
+
+
+
 	model.update({ 
 		'title' : "Title",
 	}) 
-	 
-	model.update(API('theratenews/news/').go())
 
 	model.update(API('theratenews/modules/secondLine/').go())
 
