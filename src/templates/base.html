@@ -56,8 +56,8 @@
 						<div class = "logo header__logo">{{data.logo}}</div>
 					</a>
 					<div class = "change-lang header__change-lang">
-						<a href = "/ru/">ru</a>
-						<a href = "/en/">en</a>
+						<a href = "/ru/" {% if (data.lang == 'ru') %} class = "active" {% endif %} >ru</a>
+						<a href = "/en/" {% if (data.lang == 'en') %} class = "active" {% endif %}>en</a>
 					</div>
 					<div class = "curse header__curse" style = "display: none">
 						<div>
@@ -71,7 +71,44 @@
 		 		
 		 		<div class = "page-conatiner__content_and_ads">
 			 		<div class = "page-conatiner__content">
+			 		<div class = "ads banner-horizontal-2">
+			 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- horixontal-bar-for-1000-720 -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:728px;height:90px"
+						     data-ad-client="ca-pub-4483317195565554"
+						     data-ad-slot="5252500226"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+			 		</div>
+
+
 				 		{% block content %} {% endblock %}
+
+				 		<div class="ads ads__mobile-block-580-400">
+				 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- mobile-block-580-400 -->
+							<ins class="adsbygoogle"
+							     style="display:inline-block;width:580px;height:400px"
+							     data-ad-client="ca-pub-4483317195565554"
+							     data-ad-slot="2063531429"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+				 		</div>
+
+				 		<div class = "ads ads_mobile-horizontal-320">
+				 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- mobile-horizontal-320 -->
+							<ins class="adsbygoogle"
+							     style="display:inline-block;width:320px;height:100px"
+							     data-ad-client="ca-pub-4483317195565554"
+							     data-ad-slot="7551661820"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+				 		</div>
 
 				 		<div class = "banner-horizontal">
 				 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -87,6 +124,30 @@
 
 				 		<div class = "second-line">
 				 			<div class = "second-line__cards cards">
+				 				<div class = "ads_links-flex">
+				 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									<!-- links_flex -->
+									<ins class="adsbygoogle"
+									     style="display:block"
+									     data-ad-client="ca-pub-4483317195565554"
+									     data-ad-slot="9028395028"
+									     data-ad-format="link"></ins>
+									<script>
+									(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+				 				</div>
+				 				<div class = "second-line__additional_block ads">
+						 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									<!-- additional-block-under-1300px -->
+									<ins class="adsbygoogle"
+									     style="display:inline-block;width:336px;height:280px"
+									     data-ad-client="ca-pub-4483317195565554"
+									     data-ad-slot="1380703820"></ins>
+									<script>
+									(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+				 				</div>
+
 				 				{% for item in data.second_line[:7] %}
 				 				<a href = "/{{data.lang}}/i/{{item.id}}/" class = "card" style="background-image: url({{item.img}})">
 				 					<div class = "card__title">
@@ -94,16 +155,41 @@
 				 					</div>
 				 				</a>
 				 				{% endfor %}
-				 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-								
-								<!-- Card-1 -->
-								<ins class="adsbygoogle"
-								     style="display:inline-block;width:336px;height:280px"
-								     data-ad-client="ca-pub-4483317195565554"
-								     data-ad-slot="5419125025"></ins>
-								<script>
-								(adsbygoogle = window.adsbygoogle || []).push({});
-								</script>
+				 				<div class = "ads flex-block-mobile card">
+				 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									<!-- second-line-flex-block -->
+									<ins class="adsbygoogle"
+									     style="display:block"
+									     data-ad-client="ca-pub-4483317195565554"
+									     data-ad-slot="5156598623"
+									     data-ad-format="auto"></ins>
+									<script>
+									(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+				 				</div>
+				 				<div class = "ads mobile-block-320-240">
+				 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									<!-- mobile-block-320-240 -->
+									<ins class="adsbygoogle"
+									     style="display:inline-block;width:320px;height:240px"
+									     data-ad-client="ca-pub-4483317195565554"
+									     data-ad-slot="2299033825"></ins>
+									<script>
+									(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+				 				</div>
+				 				<div class = "second-line__ads_block ads">
+					 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									
+									<!-- Card-1 -->
+									<ins class="adsbygoogle"
+									     style="display:inline-block;width:336px;height:280px"
+									     data-ad-client="ca-pub-4483317195565554"
+									     data-ad-slot="5419125025"></ins>
+									<script>
+									(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+								</div>
 				 				{% for item in data.second_line[7:] %}
 				 				<a href = "/{{data.lang}}/i/{{item.id}}/" class = "card" style="background-image: url({{item.img}})">
 				 					<div class = "card__title">
