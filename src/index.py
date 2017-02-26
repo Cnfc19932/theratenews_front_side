@@ -83,5 +83,5 @@ def item(post_id,lang = 'def'):
 	return render_template('item.html', data = model)
 
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0',port = 8801) 
+    app.run(debug=False, host='0.0.0.0',port = 80) 
 
