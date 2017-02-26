@@ -1,6 +1,6 @@
 # encoding=utf8  
 import sys, requests
-from flask import Flask,render_template,url_for,jsonify
+from flask import Flask,render_template,url_for,jsonify, abort, redirect, session
 import logging
 import json
 
@@ -43,43 +43,43 @@ class API:
 		
 
 
+def setlang(lang,session_lang = ''):
+	if lang == 'def':
+		return 'ru'
+	else:
+		if lang == 'en':
+			 return 'en'
+	return 'ru'
 
-##-----------------------------------------------------##
-#t = requests.get("http://127.0.0.1:8080/theratenews/pages/index/")
-#print t.status_code
+@app.errorhandler(404) 
+def page_not_found(error):
+	
+    return render_template('404.html'), 404
 
-
- 
+@app.route("/<string:lang>/")
 @app.route("/")
-def index():
+def index(lang = 'def'):
+	lang = setlang(lang)
 	model = API('theratenews/pages/index/').go()
-
-	model.update({ 
-		'title' : "Title",
-	}) 
-
 	model.update(API('theratenews/modules/firstLine/').go())
 	model.update(API('theratenews/modules/secondLine/').go())
-
+	model.update({'lang': lang})
 	return render_template('index.html', data = model)
 
+
+@app.route("/<string:lang>/i/<int:post_id>/")
 @app.route("/i/<int:post_id>/")
-def item(post_id): 
+def item(post_id,lang = 'def'): 
+	lang = setlang(lang)
 	model = API('theratenews/pages/index/').go()
-
-
-	 
-	model.update(API('theratenews/news/511/').go())
-
-
-
-	model.update({ 
-		'title' : "Title",
-	}) 
-
+	try:
+		model.update(API('theratenews/news/'+str(post_id)+'/').go())
+	except Exception:
+		abort(404)
 	model.update(API('theratenews/modules/secondLine/').go())
-
+	model.update({'lang': lang})
 	return render_template('item.html', data = model)
 
 if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0',port = 8801) 
+

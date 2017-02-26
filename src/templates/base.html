@@ -7,6 +7,39 @@
 			<link rel="icon" href={{ url_for('static', filename=data.seo.ico) }} type="image/x-icon" >
 		{% endif %} 
 
+		{% if data.seo.description %}
+			<meta name="Description" content="{{data.seo.description}}"/>
+			<meta itemprop="description" content="{{data.seo.description}}"/>
+			<meta property="og:description" content="{{data.seo.description}}" />
+			<meta name="twitter:description" content="{{data.seo.description}}" />
+		{% endif %} 
+
+		{% if data.seo.title %}
+			<meta name="title" content="{{data.seo.title}}"/>
+			<meta property="og:title" content="{{data.seo.title}}" />
+			<meta name="twitter:title" content="{{data.seo.title}}"/>
+		{% endif %} 
+
+		{% if data.seo.keywords %}
+			<meta name="Keywords" content="{{data.seo.keywords}}">
+		{% endif %} 
+
+                       
+			<meta itemprop="name" content="">
+			
+		    <meta property="og:url" content="" />
+		    <meta property="og:site_name" content="" />
+		    
+
+
+
+		    <meta property="og:type" content="article">
+		    <meta name="twitter:card" content="article">
+		    <meta name="twitter:site" content="@theratenews">
+		    <meta name="twitter:creator" content="@theratenews">
+		    
+		    
+		    		
 		<meta http-equiv="Cache-Control" content="no-cache">
 
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -19,9 +52,13 @@
 		<div class = "main-container">
 			<div class = "page-conatiner">
 				<header class = "header">
-					<a href = "/">
+					<a href = "/{{data.lang}}/">
 						<div class = "logo header__logo">{{data.logo}}</div>
 					</a>
+					<div class = "change-lang header__change-lang">
+						<a href = "/ru/">ru</a>
+						<a href = "/en/">en</a>
+					</div>
 					<div class = "curse header__curse" style = "display: none">
 						<div>
 							USD - 59,65
@@ -51,7 +88,7 @@
 				 		<div class = "second-line">
 				 			<div class = "second-line__cards cards">
 				 				{% for item in data.second_line[:7] %}
-				 				<a href = "/i/{{item.id}}/" class = "card" style="background-image: url({{ url_for('static', filename=item.img) }})">
+				 				<a href = "/{{data.lang}}/i/{{item.id}}/" class = "card" style="background-image: url({{item.img}})">
 				 					<div class = "card__title">
 				 						<h3>{{item.title}}</h3>
 				 					</div>
@@ -68,7 +105,7 @@
 								(adsbygoogle = window.adsbygoogle || []).push({});
 								</script>
 				 				{% for item in data.second_line[7:] %}
-				 				<a href = "/i/{{item.id}}/" class = "card" style="background-image: url({{ url_for('static', filename=item.img) }})">
+				 				<a href = "/{{data.lang}}/i/{{item.id}}/" class = "card" style="background-image: url({{item.img}})">
 				 					<div class = "card__title">
 				 						<h3>{{item.title}}</h3>
 				 					</div>
@@ -103,7 +140,6 @@
 		</div>
 
 <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter39959890 = new Ya.Metrika({ id:39959890, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/39959890" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-
 <script
   src="https://code.jquery.com/jquery-1.12.4.min.js"
   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
