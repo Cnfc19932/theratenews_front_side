@@ -9,6 +9,14 @@
 			<link rel="icon" href={{ url_for('static', filename=data.seo.ico) }} type="image/x-icon" >
 		{% endif %} 
 
+			<meta name="twitter:card" content="summary_large_image">
+
+		{% if data.news %}
+			{% if data.news.img %}
+				<meta name="twitter:image" content="{{data.news.img}}">
+			{% endif %} 
+		{% endif %}
+
 		{% if data.seo.description %}
 			<meta name="Description" content="{{data.seo.description}}"/>
 			<meta itemprop="description" content="{{data.seo.description}}"/>
@@ -36,7 +44,6 @@
 
 
 		    <meta property="og:type" content="article">
-		    <meta name="twitter:card" content="article">
 		    <meta name="twitter:site" content="@theratenews">
 		    <meta name="twitter:creator" content="@theratenews">
 		    
