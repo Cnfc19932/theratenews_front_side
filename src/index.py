@@ -21,15 +21,17 @@ class API:
 	""" Класс для работы с API """
 	api_server = "http://127.0.0.1:8080/"
 
-	def __init__(self, request):
+	def __init__(self, request, lang = 'ru'):
 		self.request = self.api_server + request
+		self.data = {'lang' : lang}
 		logging.debug( u'Установлен адрес '+self.request)
 
 	## Выполняем запрос
 	def go(self):
 		if (self.request):
 			logging.info( u'Запрос на '+self.request )
-			t = requests.get(self.request) 
+			t = requests.post(self.request,params = self.data) 
+			#print self.data
 			if t.status_code == 200:
 				logging.info( u'Запрос прошел успешно (Code: 200)')
 				logging.debug( u'Ответ '+t.content)
@@ -61,8 +63,8 @@ def page_not_found(error):
 def index(lang = 'def'):
 	lang = setlang(lang)
 	model = API('theratenews/pages/index/').go()
-	model.update(API('theratenews/modules/firstLine/').go())
-	model.update(API('theratenews/modules/secondLine/').go())
+	model.update(API('theratenews/modules/firstLine/',lang).go())
+	model.update(API('theratenews/modules/secondLine/',lang).go())
 	model.update({'lang': lang})
 	return render_template('index.html', data = model)
 
@@ -73,10 +75,10 @@ def item(post_id,lang = 'def'):
 	lang = setlang(lang)
 	model = API('theratenews/pages/index/').go()
 	try:
-		model.update(API('theratenews/news/'+str(post_id)+'/').go())
+		model.update(API('theratenews/news/'+str(post_id)+'/',lang).go())
 	except Exception:
 		abort(404)
-	model.update(API('theratenews/modules/secondLine/').go())
+	model.update(API('theratenews/modules/secondLine/',lang).go())
 	model.update({'lang': lang})
 	return render_template('item.html', data = model)
 
