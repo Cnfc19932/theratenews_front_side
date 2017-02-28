@@ -82,6 +82,10 @@ def item(post_id,lang = 'def'):
 	model.update({'lang': lang})
 	return render_template('item.html', data = model)
 
-if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0',port = 80) 
 
+if __name__ == "__main__":
+  while True:
+    try:
+       app.run(use_reloader = False,debug=False, host='0.0.0.0',port = 80)
+    except:
+      pass
