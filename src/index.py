@@ -86,6 +86,6 @@ def item(post_id,lang = 'def'):
 if __name__ == "__main__":
   while True:
     try:
-       app.run(use_reloader = False,debug=False, host='0.0.0.0',port = 80)
+       app.run(use_reloader = False,debug=False, host='0.0.0.0',port = 80) 
     except:
       pass
